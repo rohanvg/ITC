@@ -1,0 +1,151 @@
+<html>
+	<head>
+		<script language="javascript">
+			function cal(){			
+				var a = document.getElementById("ai");
+				var rd = document.getElementById("rd");
+				var gen = 2;
+				
+				if(document.getElementById('mal').checked) {
+					var gen = 0;
+				}else if(document.getElementById('fem').checked) {
+					var gen = 1;
+				}
+				
+				
+				var it = document.getElementById("it");
+				var ec = document.getElementById("ec");
+				var sh = document.getElementById("sh");
+				var b = document.getElementById("tax");				
+				var f = document.getElementById("final");
+				var c = a.value;
+				
+				if (gen==0){
+					if(c<=200000){
+						it.value = 0;
+						ec.value = 0;
+						sh.value = 0;
+						b.value = 0;
+						f.value = c; 
+					}
+					
+					if(c>200000 && c<=500000){
+						var d =2000+((c-200000)*10)/100;
+						it.value=d;
+						ec.value=d*0.02;
+						sh.value=d*0.01;
+						b.value = d+d*0.03;
+						var b1 = b.value;
+						f.value = c - b1;
+					}
+					
+					else if(c>500000 && c<=1000000){
+						var d =32000+(((c-500000)*20)/100);
+						it.value=d;
+						ec.value=d*0.02;
+						sh.value=d*0.01;
+						b.value = d+d*0.03;
+						var b1 = b.value;
+						f.value = c - b1;
+					}
+					
+					else if(c>1000000){
+						var d =92000+(((c-1000000)*30)/100);
+						it.value=d;
+						ec.value=d*0.02;
+						sh.value=d*0.01;
+						b.value = d+d*0.03;
+						var b1 = b.value;
+						f.value = c - b1;
+					}
+				}
+				
+				if (gen==1){
+					if(c<=200000){
+						it.value = 0;
+						ec.value = 0;
+						sh.value = 0;
+						b.value = 0;
+						f.value = c; 
+					}
+					
+					if(c>200000 && c<=500000){
+						var d =1000+((c-200000)*10)/100;
+						it.value=d;
+						ec.value=d*0.02;
+						sh.value=d*0.01;
+						b.value = d+d*0.03;
+						var b1 = b.value;
+						f.value = c - b1;
+					}
+					
+					else if(c>500000 && c<=1000000){
+						var d =31000+(((c-500000)*20)/100);
+						it.value=d;
+						ec.value=d*0.02;
+						sh.value=d*0.01;
+						b.value = d+d*0.03;
+						var b1 = b.value;
+						f.value = c - b1;
+					}
+					
+					else if(c>1000000){
+						var d =91000+(((c-1000000)*30)/100);
+						it.value=d;
+						ec.value=d*0.02;
+						sh.value=d*0.01;
+						b.value = d+d*0.03;
+						var b1 = b.value;
+						f.value = c - b1;
+					}
+				}
+			}
+			
+			function res(){
+				document.getElementById("frm1").reset();
+				document.getElementById("mi").focus();
+			}
+			
+			function mul(){						
+				var a0 = document.getElementById("mi");
+				var a1 = a0.value;
+				var a2 = a1*12;
+				var a = document.getElementById("ai");
+				a.value = a2;
+			
+			}
+			
+			window.onload = function() {
+				document.getElementById("mi").focus();
+			};
+			
+		</script>
+	</head>
+	
+	<body>
+		<font face="segoe ui">
+		<form name="it" id="frm1">
+			Gender: <input type="radio" id="mal" name="gen" value="m" onchange="cal()" style="position:absolute;left:300px;">
+			<p  style="position:absolute;top:-8px;left:322px;">Male</p>
+
+			<input type="radio" id="fem" name="gen" value="f" onchange="cal()" style="position:absolute;left:370px;">
+			<p  style="position:absolute;top:-8px;left:392px;">Female</p><br>
+			
+			Monthly Income: <input type="textbox" value="" id="mi" onkeyup="mul(),cal()" style="position:absolute;left:300px;"><br>
+			
+			Annual Income: <input type="textbox" value="0" id="ai" onkeyup="cal()" onchange="cal()" style="position:absolute;left:300px;"><br><br>
+			
+			Income Tax: <input type="textbox" id="it" value="0" style="position:absolute;left:300px;"><br>
+			
+			Education Cess: <input type="textbox" id="ec" value="0" style="position:absolute;left:300px;"><br>
+			
+			Secondary & Higher Education Cess: <input type="textbox" id="sh" value="0" style="position:absolute;left:300px;"><br><br>
+			
+			Tax Payable: <input type="textbox" id="tax" value="0" style="position:absolute;left:300px;"><br>
+			
+			Income After Tax Cuts: <input type="textbox" id="final" value="0" style="position:absolute;left:300px;"><br><br>
+			
+			<input type = "button" value="Reset" onclick="res()" style="position:absolute;left:300px;">
+		</form>
+	</body>
+</html>
